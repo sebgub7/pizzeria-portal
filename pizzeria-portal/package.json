@@ -9,6 +9,7 @@
     "start-and-test": "run-p start-silent test ",
     "build": "react-scripts build",
     "test": "react-scripts test --noStackTrace",
+    "lint": "esw --watch --clear",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
     "eject": "react-scripts eject"
@@ -54,8 +55,10 @@
     "web-vitals": "^2.1.2"
   },
   "devDependencies": {
+    "eslint-watch": "^8.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "watch": "^1.0.2"
   }
 }
