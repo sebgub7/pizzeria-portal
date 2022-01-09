@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Booking from './components/views/Booking/Booking';
 import BookingNew from './components/views/BookingNew/BookingNew';
@@ -15,19 +15,21 @@ import OrderNew from './components/views/OrderNew/OrderNew';
 
 function App() {
   return (
-    <BrowserRouter basename={'/panel'}>
+    <BrowserRouter basename={`${process.env.PUBLIC_URL}`}>
       <MainLayout>
-        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/bookings`} component={Bookings}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/bookings/booking-new`} component={BookingNew}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/bookings/booking/:id`} component={Booking}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/bookings/event-new`} component={EventNew}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/bookings/event/:id`} component={Event}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/ordering`} component={Ordering}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/ordering/order-new`} component={OrderNew}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/ordering/order/:id`} component={Order}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen}></Route>
-        <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login}></Route>
+        <Routes>
+          <Route exact path={`/`} element={<Dashboard />}></Route>
+          <Route path={`/bookings`} element={<Bookings />}></Route>
+          <Route path={`/bookings/booking-new`} element={<BookingNew />}></Route>
+          <Route path={`/bookings/booking/:id`} element={<Booking />}></Route>
+          <Route path={`/bookings/event-new`} element={<EventNew />}></Route>
+          <Route path={`/bookings/event/:id`} element={<Event />}></Route>
+          <Route path={`/ordering`} element={<Ordering />}></Route>
+          <Route path={`/ordering/order-new`} element={<OrderNew />}></Route>
+          <Route path={`/ordering/order/:id`} element={<Order />}></Route>
+          <Route path={`/kitchen`} element={<Kitchen />}></Route>
+          <Route path={`/login`} element={<Login />}></Route>
+        </Routes>
       </MainLayout>
     </BrowserRouter>
   );
