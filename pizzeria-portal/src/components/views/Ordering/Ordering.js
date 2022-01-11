@@ -6,7 +6,7 @@ const Ordering = () => (
   <div className={styles.component}>
     <h2>Ordering view</h2>
     <Link to={`/ordering/order-new`}>New order</Link>
-    <Link to={`/ordering/order/:id`}>Order id</Link>
+    <Link to={`/ordering/order/123`}>Order id</Link>
   </div>
 );
 
