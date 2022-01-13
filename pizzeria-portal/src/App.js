@@ -9,9 +9,7 @@ import EventNew from './components/views/EventNew/EventNew';
 import Dashboard from './components/views/Home/Home';
 import Kitchen from './components/views/Kitchen/Kitchen';
 import Login from './components/views/Login/Login';
-import Order from './components/views/Order/Order';
-import Ordering from './components/views/Ordering/Ordering';
-import OrderNew from './components/views/OrderNew/OrderNew';
+import Waiter from './components/views/Waiter/Waiter';
 import { StylesProvider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core';
@@ -35,11 +33,9 @@ function App() {
               <Route path={`/table/booking/:id`} element={<Booking />}></Route>
               <Route path={`/table/event-new`} element={<EventNew />}></Route>
               <Route path={`/table/event/:id`} element={<Event />}></Route>
-              <Route path={`/ordering`} element={<Ordering />}></Route>
-              <Route path={`/ordering/order-new`} element={<OrderNew />}></Route>
-              <Route path={`/ordering/order/:id`} element={<Order />}></Route>
               <Route path={`/kitchen`} element={<Kitchen />}></Route>
               <Route path={`/login`} element={<Login />}></Route>
+              <Route path={`/waiter`} element={<Waiter />}></Route>
             </Routes>
           </MainLayout>
         </ThemeProvider>
