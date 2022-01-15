@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Booking from './components/views/Booking/Booking';
@@ -9,12 +10,13 @@ import EventNew from './components/views/EventNew/EventNew';
 import Dashboard from './components/views/Home/Home';
 import Kitchen from './components/views/Kitchen/Kitchen';
 import Login from './components/views/Login/Login';
-import Waiter from './components/views/Waiter/Waiter';
+import Waiter from './components/views/Waiter/WaiterContainer';
 import { StylesProvider } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core';
+import store from './redux/store';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: { main: '#2B4C6F' },
   },
@@ -22,25 +24,27 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <BrowserRouter basename={`${process.env.PUBLIC_URL}`}>
-      <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <MainLayout>
-            <Routes>
-              <Route exact path={`/`} element={<Dashboard />}></Route>
-              <Route path={`/table`} element={<Table />}></Route>
-              <Route path={`/table/booking-new`} element={<BookingNew />}></Route>
-              <Route path={`/table/booking/:id`} element={<Booking />}></Route>
-              <Route path={`/table/event-new`} element={<EventNew />}></Route>
-              <Route path={`/table/event/:id`} element={<Event />}></Route>
-              <Route path={`/kitchen`} element={<Kitchen />}></Route>
-              <Route path={`/login`} element={<Login />}></Route>
-              <Route path={`/waiter`} element={<Waiter />}></Route>
-            </Routes>
-          </MainLayout>
-        </ThemeProvider>
-      </StylesProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter basename={`${process.env.PUBLIC_URL}`}>
+        <StylesProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <MainLayout>
+              <Routes>
+                <Route exact path={`/`} element={<Dashboard />}></Route>
+                <Route path={`/table`} element={<Table />}></Route>
+                <Route path={`/table/booking-new`} element={<BookingNew />}></Route>
+                <Route path={`/table/booking/:id`} element={<Booking />}></Route>
+                <Route path={`/table/event-new`} element={<EventNew />}></Route>
+                <Route path={`/table/event/:id`} element={<Event />}></Route>
+                <Route path={`/kitchen`} element={<Kitchen />}></Route>
+                <Route path={`/login`} element={<Login />}></Route>
+                <Route path={`/waiter`} element={<Waiter />}></Route>
+              </Routes>
+            </MainLayout>
+          </ThemeProvider>
+        </StylesProvider>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
